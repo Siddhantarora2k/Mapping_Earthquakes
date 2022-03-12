@@ -17,12 +17,12 @@ attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap
 // create a base layer that holds both maps.
 let baseMaps = {
     Streets: streets,
-    "Satellite Streets": satelliteStreets
+    "Satellite": satelliteStreets
 };
 
 // create the map object with center, zoom level and default layer.
 let map = L.map('mapid', {
-    center: [43.7, -79.3],
+    center: [39.5, -98.5],
     zoom: 11,
     layers: [satelliteStreets]
 })
@@ -34,7 +34,7 @@ L.control.layers(baseMaps).addTo(map);
 let torontoHoods = "https://raw.githubusercontent.com/Siddhantarora2k/Mapping_Earthquakes/main/torontoNeighborhoods.json"
 
 // grabbing our Toronto GeoJSON dta.
-d3.json(torontoHoods).then(function(data) {
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson").then(function(data) {
     console.log(data);
     // creating a GeoJSON layer with the retrieved data
     L.geoJson(data).addTo(map);
